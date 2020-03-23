@@ -1,7 +1,11 @@
+from math import inf
+
 class Vertex:
     def __init__(self,key):
         self.id = key
         self.connectedTo = {}
+        self.distance = inf
+        self.pred = None
 
     def addNeighbor(self,nbr,weight=0):
         self.connectedTo[nbr] = weight
@@ -17,6 +21,8 @@ class Vertex:
 
     def getWeight(self,nbr):
         return self.connectedTo[nbr]
+
+
 
 
 class Graph:
@@ -41,9 +47,9 @@ class Graph:
 
     def addEdge(self,f,t,weight=0):
         if f not in self.vertList:
-            nv = self.addVertex(f)
+            self.addVertex(f)
         if t not in self.vertList:
-            nv = self.addVertex(t)
+            self.addVertex(t)
         self.vertList[f].addNeighbor(self.vertList[t], weight)
 
     def getVertices(self):
@@ -51,3 +57,5 @@ class Graph:
 
     def __iter__(self):
         return iter(self.vertList.values())
+
+

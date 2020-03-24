@@ -28,6 +28,7 @@ class Vertex:
 class Graph:
     def __init__(self):
         self.vertList = {}
+        self.edgeList = {}
         self.numVertices = 0
 
     def addVertex(self,key):
@@ -47,13 +48,17 @@ class Graph:
 
     def addEdge(self,f,t,weight=0):
         if f not in self.vertList:
-            self.addVertex(f)
+            vf = self.addVertex(f)
         if t not in self.vertList:
-            self.addVertex(t)
+            vt = self.addVertex(t)
+        self.edgeList[(self.getVertex(f) , self.getVertex(t))] = weight
         self.vertList[f].addNeighbor(self.vertList[t], weight)
 
     def getVertices(self):
         return self.vertList.keys()
+
+    def getEdges(self):
+        return iter(self.edgeList.keys())
 
     def __iter__(self):
         return iter(self.vertList.values())

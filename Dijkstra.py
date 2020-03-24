@@ -4,7 +4,7 @@ from Graphs import Graph , Vertex
 def dijkstra(aGraph, start):
     pq = PriorityQueue()
     start.distance = 0
-    pq.buildHeap([(v , v.distance) for v in aGraph])
+    pq.buildHeap([[v , v.distance] for v in aGraph])
 
     while not pq.currentSize == 0:
         currentVert =  pq.delMin()
@@ -17,4 +17,5 @@ def dijkstra(aGraph, start):
                 pq.decreaseKey(nextVert,newDist)
 
     
+
 

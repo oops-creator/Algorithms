@@ -149,14 +149,14 @@ class PriorityQueue:
     def buildHeap(self,alist):
         i = len(alist) // 2
         self.currentSize = len(alist)
-        self.heapList = [(0,0)] + alist[:]
+        self.heapList = [[0,0]] + alist[:]
         while (i > 0):
             self.heapifyDown(i)
             i = i -1
 
     def decreaseKey(self,vert , val):
-        for i in range(len(self.heapList)):
-            if self.heapList[i][0] == vert.getId():
+        for i in range(1,len(self.heapList)):
+            if self.heapList[i][0].getId() == vert.getId():
                 self.heapList[i][1] = val
                 self.heapifyDown(1)
                 return

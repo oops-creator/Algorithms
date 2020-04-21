@@ -3,11 +3,6 @@ from tkinter import ttk
 from Graphs import Graph
 import random
 
-g = Graph()
-g.addEdge(1,2,1)
-g.addEdge(1,3,1)
-g.addEdge(2,3,1)
-
 
 class PlotGraph:
     
@@ -36,13 +31,3 @@ class PlotGraph:
 
 
         self.root.mainloop()
-
-pg = PlotGraph()
-pg.plot(g)
-
-from Kruskal import Kruskal
-ng = Kruskal(g)
-gg = ng.minSpanning()
-
-kg = PlotGraph()
-kg.plot(gg)

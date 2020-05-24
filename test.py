@@ -1,34 +1,12 @@
-#arr = [int(i) for i in input().split()]
+from Graphs import Graph 
+from BellmanFord import bellmanFord
 
-import time
-import random
+g = Graph()
+g.addEdge(1,2 , -1)
+g.addEdge(2,3 , 1)
+g.addEdge(2,4 , 1)
+g.addEdge(4,1,-1)
 
-arr = random.choices(range(9999999) , k=999999)
-
-
-
-k = 0
-start = time.time()
-
-for i in arr:
-    k=i
-    k+=1
-    k-=1
-    k=i
-    k+=1
-    k-=1
-    k=i
-    k+=1
-    k-=1
-    k=i
-    k+=1
-    k-=1
-
-
-end = time.time()
-print(end-start)
-
-start = time.time()
-arr.sort()
-end = time.time()
-print(end-start)
+bellmanFord(g,g.getVertex(1))
+for i in g:
+    print(str(i), "has distance from 1" , i.distance)

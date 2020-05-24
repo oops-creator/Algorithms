@@ -10,7 +10,9 @@ def bellmanFord(aGraph, start):
                 edge[1].pred = edge[0]
 
     for edge in aGraph.getEdges():
-        assert edge[0].distance + aGraph.edgeList[edge] >= edge[1].distance
-
+        try:
+            assert edge[0].distance + aGraph.edgeList[edge] >= edge[1].distance
+        except:
+            print("Negtive cycle detected")
     
 
